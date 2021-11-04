@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form>
+            <label>着席時回転数<input id="firstCount" type="text" ></label><br>
+            <label>サンド残金<input id="sandRemain" type="text"></label><br>
+            <label>現在の回転数<input id="nowCount" type="text"></label><br>
+            <label>遊タイム<input id="youTime" type="text"></label>
+
+            <p id="msg"></p>
+
+            <input type="button" value="Check" id="calcButton">
+        </form>
+    </body>
+    <script>
+        function calc(){
+            let result,result2,result3;
+            console.log(nowCount.value);
+            console.log(firstCount.value);
+            console.log(sandRemain.value);
+
+            result =  (nowCount.value - firstCount.value) / ((10000 - sandRemain.value) / 1000);
+            result2 = (youTime.value - nowCount.value) / result;
+            //result3 = result2 * 1000 / 4;
+            console.log(result);
+
+          msg.innerText = '現在: 1k/' + result + '回転\n遊タイムまであと' + result2 + "k必要です。\n";
+        }
+        
+        let firstCount = document.getElementById('firstCount');
+        let sandRemain = document.getElementById('sandRemain');
+        let nowCount = document.getElementById('nowCount');
+        let youTime = document.getElementById('youTime');
+
+        let msg = document.getElementById('msg');
+        
+        let calcButton = document.getElementById('calcButton');
+        calcButton.addEventListener('click', calc);
+        </script>
+        
+        </body>
+</html>
