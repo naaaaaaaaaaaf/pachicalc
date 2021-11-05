@@ -15,17 +15,18 @@
     </body>
     <script>
         function calc(){
-            let result,result2,result3;
+            let result,result2,result3,result4;
             console.log(nowCount.value);
             console.log(firstCount.value);
             console.log(sandRemain.value);
 
             result =  (nowCount.value - firstCount.value) / ((10000 * usedYukichi.value + 10000 - sandRemain.value) / 1000);
             result2 = (youTime.value - nowCount.value) / result;
-            //result3 = result2 * 1000 / 4;
+            result3 =  (10000 * usedYukichi.value + 10000 - sandRemain.value) / 4;
+            result4 = result2 * 1000 /4 + result3;
             console.log(result);
 
-          msg.innerText = '現在: 1k/' + result + '回転\n遊タイムまであと' + result2 + "k必要です。\n";
+          msg.innerText = '現在: 1k/' + result + '回転\n遊タイムまであと' + Math.round(result2) + "k必要です。\n" + "今当って" + result3 + "発出れば捲りです。\n(遊タイム込み: " + Math.round(result4) + "発)";
         }
         
         let firstCount = document.getElementById('firstCount');
